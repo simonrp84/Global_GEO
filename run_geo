@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#SBATCH --cpus-per-task=10
+#SBATCH --time=00:25:00
+#SBATCH --mem=30000M
+#SBATCH --job-name=glob_geo
+#SBATCH --account=rsgnrt
+#SBATCH --partition=rsgnrt
+#SBATCH --output=/gws/smf/j04/nceo_generic/Software/globgeo/globgeo.log
+#SBATCH --error=/gws/smf/j04/nceo_generic/Software/globgeo/globgeo.err
+
+export LD_LIBRARY_PATH=""
+. /gws/smf/j04/nceo_generic/Software/miniconda3/etc/profile.d/conda.sh
+conda activate base 
+export PATH=/gws/smf/j04/nceo_generic/Software/miniconda3/bin/:$PATH
+
+/gws/smf/j04/nceo_generic/Software/miniconda3/bin/python -u /gws/smf/j04/nceo_generic/Software/globgeo/Global_GEO.py

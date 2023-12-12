@@ -1,0 +1,23 @@
+#### GLOBAL GEO COMPOSITE CREATOR ####
+
+These scripts produce global geostationary composite imagery from
+Himawari-8, GOES-16, GOES-18, Meteosat-9 and Meteosat-10.
+
+To run, simply execute:
+ python Global_GEO.py
+
+And the script will process the most recent suitable timeslot
+(hourly, due to SEVIRI license restrictions imposed on the RSG
+group). To process older data, instead run the script with a
+command line argument specifying the desired timeslot:
+ python Global_GEO.py 202210051200
+Where the timeslot is in YYYYmmddHHMM format.
+
+This script requires numerous libraries, most notably:
+ - satpy and dependencies
+ - s3fs
+ - gdal
+
+Also note that for performance reasons, an internal satpy function
+( _get_sensor_angles) is used. This is not a supported function so
+the utility may break at any point in the future.
